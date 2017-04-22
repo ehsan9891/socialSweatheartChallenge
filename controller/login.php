@@ -1,5 +1,5 @@
 <?php
- // Get the FacebookRedirectLoginHelper
+// Get the FacebookRedirectLoginHelper
     $helper = $fb->getRedirectLoginHelper();
 
     $permissions = ['email', 'public_profile']; // optional

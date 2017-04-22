@@ -9,11 +9,12 @@ include_once __DIR__.'/initialize.php';
 use Szenis\Router;
 use Szenis\RouteResolver;
 use \Curl\Curl;
+echo implode(",", $_POST);
 
 $router = new Router();
 $curl = new Curl();
 
-$router->add('/', 'GET', function() {
+$router->add('/', 'GET|POST', function() {
     global  $fb;
     include_once 'controller/login.php';
     return;
@@ -23,6 +24,18 @@ $router->add('/success/', 'GET', function() {
     
     global $fb,$curl;
     include_once 'controller/logincallback.php';
+    return;
+});
+$router->add('/panel/', 'GET', function() {
+    
+    global $fb;
+    include_once 'controller/panel.php';
+    return;
+});
+$router->add('/deauth/', 'GET|POST', function() {
+    
+    global $fb;
+    include_once 'controller/deauth.php';
     return;
 });
 

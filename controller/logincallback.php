@@ -8,15 +8,24 @@ $token = $helper->getAccessToken();
 $tokenAsString = (string) $token;
 $longLivedToken = getLongLiveIDToken($tokenAsString)->access_token;
 
-$picinfo = FB_Request("/me/picture?type=normal",$token);
-$nameinfo = FB_Request("/me",$token);
+$picinfo = FB_Request("/me/picture?type=normal", $token);
+$nameinfo = FB_Request("/me", $token);
 
 
 $me = $nameinfo->getGraphUser();
-echo $me->getName();
-echo $me->getID();
+$name = $me->getName();
+$id = $me->getID();
 $pic = $picinfo->getHeaders()['Location'];
-var_dump($pic);
+
+$data = array("userid" => $id,
+    "name" => $name,
+    "picurl" => $pic,
+    "longToken" => $longLivedToken,
+    "is_active"=>true
+);
+$db->insert("user_data", $data);
+$_SESSION['user_id'] = $id;
+header("Location:/panel");
 
 function getLongLiveIDToken($tokenAsString) {
     global $AppID, $AppSecret, $curl;
@@ -36,7 +45,7 @@ function getLongLiveIDToken($tokenAsString) {
     }
 }
 
-function FB_Request($type,$token) {
+function FB_Request($type, $token) {
     global $fb;
     try {
         // Get the \Facebook\GraphNodes\GraphUser object for the current user.
