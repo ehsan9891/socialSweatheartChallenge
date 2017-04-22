@@ -9,7 +9,6 @@ include_once __DIR__.'/initialize.php';
 use Szenis\Router;
 use Szenis\RouteResolver;
 use \Curl\Curl;
-echo implode(",", $_POST);
 
 $router = new Router();
 $curl = new Curl();
