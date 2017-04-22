@@ -8,9 +8,10 @@ include_once __DIR__.'/initialize.php';
 
 use Szenis\Router;
 use Szenis\RouteResolver;
+use \Curl\Curl;
 
 $router = new Router();
-
+$curl = new Curl();
 
 $router->add('/', 'GET', function() {
     global  $fb;
@@ -20,7 +21,7 @@ $router->add('/', 'GET', function() {
 
 $router->add('/success/', 'GET', function() {
     
-    global $fb;
+    global $fb,$curl;
     include_once 'controller/logincallback.php';
     return;
 });
