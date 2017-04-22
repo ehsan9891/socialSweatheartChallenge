@@ -1,0 +1,5 @@
+{
+    "require": {
+        "szenis/routing": "^1.1"
+    }
+}
