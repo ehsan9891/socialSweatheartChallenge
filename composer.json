@@ -1,5 +1,6 @@
 {
     "require": {
-        "szenis/routing": "^1.1"
+        "szenis/routing": "^1.1",
+        "facebook/graph-sdk": "^5.5"
     }
 }
