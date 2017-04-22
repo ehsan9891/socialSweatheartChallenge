@@ -1,6 +1,7 @@
 {
     "require": {
         "szenis/routing": "^1.1",
-        "facebook/graph-sdk": "^5.5"
+        "facebook/graph-sdk": "^5.5",
+        "joshcam/mysqli-database-class": "dev-master"
     }
 }
